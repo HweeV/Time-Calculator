@@ -32,11 +32,13 @@ def add_time(start, duration,start_day=''):
         minutes = str(minutes)
 
 # Midday or not
-    if 0 < hours < 11:
+    if 0 < hours < 12:
         new_time += str(hours) + ':' + minutes + before_midday
     elif hours == 0:
         hours += 12
         new_time += str(hours) + ':' + minutes + before_midday
+    elif hours == 12:
+        new_time += str(hours) + ':' + minutes + after_midday
     elif hours > 12:
         hours -= 12
         new_time += str(hours) + ':' + minutes + after_midday
@@ -57,4 +59,3 @@ def add_time(start, duration,start_day=''):
     print(new_time)
     return new_time
 
-add_time('11:59 AM', '0:01', 'Monday')
